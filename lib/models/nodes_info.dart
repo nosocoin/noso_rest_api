@@ -16,12 +16,16 @@ class Masternode {
     required this.consecutivePayments,
   });
 
-  factory Masternode.fromJson(Map<String, dynamic> json) =>
-      _$MasternodeFromJson(json);
+  factory Masternode.fromJson(Map<String, dynamic> json) {
+    return Masternode(
+      ipv4: json['ipv4'] ?? '',
+      port: json['port'] ?? 0,
+      address: json['address'] ?? '',
+      consecutivePayments: json['consecutive_payments'] ?? 0,
+    );
+  }
 
   Map<String, dynamic> toJson() => _$MasternodeToJson(this);
-
-
 }
 
 @JsonSerializable()
@@ -38,8 +42,17 @@ class NodesInfo {
     required this.masternodes,
   });
 
-  factory NodesInfo.fromJson(Map<String, dynamic> json) =>
-      _$NodesInfoFromJson(json);
+  factory NodesInfo.fromJson(Map<String, dynamic> json) {
+    return NodesInfo(
+      blockId: json['blockId'] ?? 0,
+      reward: json['reward'] != null ? json['reward'].toDouble() : 0.0,
+      count: json['count'] ?? 0,
+      masternodes: (json['masternodes'] as List<dynamic>?)
+              ?.map((nodeJson) => Masternode.fromJson(nodeJson))
+              .toList() ??
+          [],
+    );
+  }
 
   Map<String, dynamic> toJson() => _$NodesInfoToJson(this);
 
