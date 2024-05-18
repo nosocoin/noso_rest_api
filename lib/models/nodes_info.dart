@@ -44,7 +44,7 @@ class NodesInfo {
 
   factory NodesInfo.fromJson(Map<String, dynamic> json) {
     return NodesInfo(
-      blockId: json['blockId'] ?? 0,
+      blockId: json['block_id'] ?? 0,
       reward: json['reward'] != null ? json['reward'].toDouble() : 0.0,
       count: json['count'] ?? 0,
       masternodes: (json['masternodes'] as List<dynamic>?)
