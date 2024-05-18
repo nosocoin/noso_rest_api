@@ -30,6 +30,7 @@ class Masternode {
 
 @JsonSerializable()
 class NodesInfo {
+  @JsonKey(name: 'block_id')
   final int blockId;
   final double reward;
   final int count;

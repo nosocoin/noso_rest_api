@@ -22,7 +22,7 @@ Map<String, dynamic> _$MasternodeToJson(Masternode instance) =>
     };
 
 NodesInfo _$NodesInfoFromJson(Map<String, dynamic> json) => NodesInfo(
-      blockId: (json['blockId'] as num).toInt(),
+      blockId: (json['block_id'] as num).toInt(),
       reward: (json['reward'] as num).toDouble(),
       count: (json['count'] as num).toInt(),
       masternodes: (json['masternodes'] as List<dynamic>)
@@ -31,7 +31,7 @@ NodesInfo _$NodesInfoFromJson(Map<String, dynamic> json) => NodesInfo(
     );
 
 Map<String, dynamic> _$NodesInfoToJson(NodesInfo instance) => <String, dynamic>{
-      'blockId': instance.blockId,
+      'block_id': instance.blockId,
       'reward': instance.reward,
       'count': instance.count,
       'masternodes': instance.masternodes,
