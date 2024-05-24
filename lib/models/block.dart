@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:noso_rest_api/models/transaction.dart';
+import 'package:noso_rest_api/models/transaction_bloc.dart';
 
 part 'block.g.dart';
 
@@ -39,7 +39,7 @@ class Block {
   final int masternodeTotalReward;
   @JsonKey(name: 'circulating_supply')
   final int circulatingSupply;
-  final List<Transaction> transactions;
+  final List<TransactionBlock> transactions;
 
   Block({
     required this.blockId,

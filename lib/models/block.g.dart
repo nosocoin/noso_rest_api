@@ -26,7 +26,7 @@ Block _$BlockFromJson(Map<String, dynamic> json) => Block(
       masternodeTotalReward: (json['masternode_total_reward'] as num).toInt(),
       circulatingSupply: (json['circulating_supply'] as num).toInt(),
       transactions: (json['transactions'] as List<dynamic>)
-          .map((e) => Transaction.fromJson(e as Map<String, dynamic>))
+          .map((e) => TransactionBlock.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
