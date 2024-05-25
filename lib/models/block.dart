@@ -3,6 +3,19 @@ import 'package:noso_rest_api/models/transaction_bloc.dart';
 
 part 'block.g.dart';
 
+int _fromJsonToInt(dynamic value) {
+  if (value is int) {
+    return value;
+  } else if (value is String) {
+    if (value == 'Na') {
+      return 0;
+    }
+    return int.tryParse(value) ?? 0;
+  } else {
+    return 0;
+  }
+}
+
 @JsonSerializable()
 class Block {
   @JsonKey(name: 'block_id')
@@ -31,13 +44,13 @@ class Block {
   final int blockReward;
   @JsonKey(name: 'block_diff')
   final int blockDiff;
-  @JsonKey(name: 'masternode_count')
+  @JsonKey(name: 'masternode_count', fromJson: _fromJsonToInt)
   final int masternodeCount;
-  @JsonKey(name: 'masternode_reward')
+  @JsonKey(name: 'masternode_reward', fromJson: _fromJsonToInt)
   final int masternodeReward;
-  @JsonKey(name: 'masternode_total_reward')
+  @JsonKey(name: 'masternode_total_reward', fromJson: _fromJsonToInt)
   final int masternodeTotalReward;
-  @JsonKey(name: 'circulating_supply')
+  @JsonKey(name: 'circulating_supply', fromJson: _fromJsonToInt)
   final int circulatingSupply;
   final List<TransactionBlock> transactions;
 
