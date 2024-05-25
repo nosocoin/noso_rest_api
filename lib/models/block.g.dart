@@ -21,10 +21,10 @@ Block _$BlockFromJson(Map<String, dynamic> json) => Block(
       blockFee: (json['block_fee'] as num).toInt(),
       blockReward: (json['block_reward'] as num).toInt(),
       blockDiff: (json['block_diff'] as num).toInt(),
-      masternodeCount: (json['masternode_count'] as num).toInt(),
-      masternodeReward: (json['masternode_reward'] as num).toInt(),
-      masternodeTotalReward: (json['masternode_total_reward'] as num).toInt(),
-      circulatingSupply: (json['circulating_supply'] as num).toInt(),
+      masternodeCount: _fromJsonToInt(json['masternode_count']),
+      masternodeReward: _fromJsonToInt(json['masternode_reward']),
+      masternodeTotalReward: _fromJsonToInt(json['masternode_total_reward']),
+      circulatingSupply: _fromJsonToInt(json['circulating_supply']),
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => TransactionBlock.fromJson(e as Map<String, dynamic>))
           .toList(),
