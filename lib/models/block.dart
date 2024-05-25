@@ -7,10 +7,9 @@ int _fromJsonToInt(dynamic value) {
   if (value is int) {
     return value;
   } else if (value is String) {
-    if (value == 'Na') {
-      return 0;
-    }
     return int.tryParse(value) ?? 0;
+  } else if (value is num) {
+    return value.toInt();
   } else {
     return 0;
   }
